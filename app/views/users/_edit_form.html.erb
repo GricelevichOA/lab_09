@@ -1,0 +1,23 @@
+<%= form_for(@user, as: :user, url: user_path(@user), method: :put) do |f| %>
+	<% if user.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+			<ul>
+				<% user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.label 'Username' %><br>
+	<%= f.text_field :username %>
+	<% if @user.type == 'Friend' %>
+		<%= f.select(:type, options_for_select([['Friend', 'Friend'], ['Neutrality', 'Neutrality']], selected: f.object.type), include_blank: true)%>
+	<% elsif @user.type == 'Enemy' %>
+		<%= f.select(:type, options_for_select([['Enemy', 'Enemy'], ['Neutrality', 'Neutrality']], selected: f.object.type), include_blank: true)%>
+	<% else %>
+		<%= f.select(:type, options_for_select([['Enemy', 'Enemy'], ['Friend', 'Friend']], selected: f.object.type), include_blank: true)%>
+	<% end %>
+	<%= f.submit %>
+<% end %>
