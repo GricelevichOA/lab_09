@@ -10,6 +10,7 @@
 		</div>
 	<% end %>
 	<%= @user.username %>
+	<%= f.hidden_field :username, :value => @user.username %>
 	<p>Change type to:</p>
 	<% if @user.type == 'Friend' %>
 		<%= f.select(:type, options_for_select([['Friend', 'Friend'], ['Neutrality', 'Neutrality']], selected: f.object.type), include_blank: true)%>

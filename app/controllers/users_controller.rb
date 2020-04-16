@@ -26,6 +26,8 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
+			lg = LogService.new(user_params)
+			lg.create_log
 			redirect_to users_url, notice: 'User was successfully updated.'
 		else
 			render :edit
