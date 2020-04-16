@@ -1,0 +1,7 @@
+<h1>Log</h1>
+
+<% @logs.each do |log| %>
+  <p><%= log.display_log %></p>
+<% end %>
+
+<%= link_to 'Back', users_path %>
