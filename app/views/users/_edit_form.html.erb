@@ -9,9 +9,8 @@
 			</ul>
 		</div>
 	<% end %>
-
-	<%= f.label 'Username' %><br>
-	<%= f.text_field :username %>
+	<%= @user.username %>
+	<p>Change type to:</p>
 	<% if @user.type == 'Friend' %>
 		<%= f.select(:type, options_for_select([['Friend', 'Friend'], ['Neutrality', 'Neutrality']], selected: f.object.type), include_blank: true)%>
 	<% elsif @user.type == 'Enemy' %>

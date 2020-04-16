@@ -1,69 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>List of all users</h1>
-<h1>Friends</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @friends.each do |friend| %>
-      <tr>
-        <td><%= friend.username %></td>
-        <td><%= link_to 'Show', friend %></td>
-        <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
-        <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Enemies</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @enemies.each do |enemy| %>
-      <tr>
-        <td><%= enemy.username %></td>
-        <td><%= link_to 'Show', enemy %></td>
-        <td><%= link_to 'Edit', edit_enemy_path(enemy) %></td>
-        <td><%= link_to 'Destroy', enemy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Neutralities</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @neutralities.each do |neutrality| %>
-      <tr>
-        <td><%= neutrality.username %></td>
-        <td><%= link_to 'Show', neutrality %></td>
-        <td><%= link_to 'Edit', edit_neutrality_path(neutrality) %></td>
-        <td><%= link_to 'Destroy', neutrality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% @users.each do |user| %>
+  <%= user.display_user %>
+  <%= link_to 'Show', user %>
+  <%= link_to 'Edit', edit_user_path(user) %>
+  <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </br>
+<% end %>
 <br>
 
+<%= link_to 'See logs', logs_path %>
+</br>
 <%= link_to 'New User', new_user_path %>

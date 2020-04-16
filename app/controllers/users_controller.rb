@@ -2,10 +2,7 @@ class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@users = User.all
-		@friends = Friend.all
-		@enemies = Enemy.all
-		@neutralities = Neutrality.all
+		@users = User.all.decorate
 	end
 
 	def show
@@ -47,5 +44,6 @@ def set_user
 end
 
 def user_params
-	params.require(:user).permit(:username, :type)
+	params.require(:user).permit(:id, :username, :type)
 end
+
